@@ -18,7 +18,7 @@ class CreateProfileField extends Migration {
             $table->increments('id');
             $table->integer('profile_id')->unsigned();
             $table->integer('profile_field_type_id')->unsigned();
-            $table->string('value');
+            $table->string('value',100);
             // relations
             $table->foreign('profile_id')
                   ->references('id')->on('user_profile')

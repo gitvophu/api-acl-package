@@ -16,22 +16,31 @@ class CreateUsersTable extends Migration {
         Schema::create('users', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->string('email');
-            $table->string('password');
+            $table->string('email', 100);
+            $table->string('password',100);
             $table->text('permissions')->nullable();
             $table->boolean('activated')->default(0);
             $table->boolean('banned')->default(0);
-            $table->string('activation_code')->nullable();
+            $table->string('activation_code',100)->nullable();
             $table->timestamp('activated_at')->nullable();
             $table->timestamp('last_login')->nullable();
-            $table->string('persist_code')->nullable();
-            $table->string('reset_password_code')->nullable();
+            $table->string('persist_code',100)->nullable();
+            $table->string('reset_password_code',100)->nullable();
             $table->boolean('protected')->default(0);
             $table->timestamps();
             // setup index
             $table->unique('email');
             $table->index('activation_code');
             $table->index('reset_password_code');
+            // nhom a
+
+            $table->string('name',100)->nullable();
+            $table->string('image',100)->nullable();
+            $table->string('token',100)->nullable();
+            $table->string('reset_pass_token',100)->nullable();
+            $table->integer('token_expire')->nullable();
+            $table->integer('token_status')->nullable();
+            $table->integer('role')->nullable();
         });
     }
 

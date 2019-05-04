@@ -16,7 +16,7 @@ class CreateProfileFieldTypes extends Migration {
         Schema::create('profile_field_type', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->string('description');
+            $table->string('description',100);
             $table->timestamps();
         });
 	}
