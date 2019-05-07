@@ -15,6 +15,8 @@
                     @foreach($menu_items as $item)
                         <li class="{!! LaravelAcl\Library\Views\Helper::get_active_route_name($item->getRoute()) !!}"> <a href="{!! $item->getLink() !!}">{!!$item->getName()!!}</a></li>
                     @endforeach
+            <li class="{!! LaravelAcl\Library\Views\Helper::get_active_route_name($item->getRoute()) !!}"> <a href="{{route('users.list')}}">User</a></li>
+            <li class="{!! LaravelAcl\Library\Views\Helper::get_active_route_name($item->getRoute()) !!}"> <a href="{{route('products.list')}}">Product</a></li>
                 @endif
             </ul>
             <div class="navbar-nav nav navbar-right">

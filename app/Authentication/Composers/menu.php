@@ -21,6 +21,7 @@ View::composer(['laravel-authentication-acl::admin.dashboard.*'], function ($vie
                     "icon" => '<i class="fa fa-tachometer"></i>'
             ]
     ]);
+    
 });
 
 /**
@@ -72,6 +73,19 @@ View::composer(['laravel-authentication-acl::admin.permission.*'], function ($vi
             ],
             "Add permission"   => [
                     'url'  => URL::route('permission.edit'),
+                    "icon" => '<i class="fa fa-plus-circle"></i>'
+            ]
+    ]);
+});
+View::composer(['laravel-authentication-acl::admin.product.*'], function ($view)
+{
+    $view->with('sidebar_items', [
+            "Product list" => [
+                    'url'  => URL::route('products.list'),
+                    "icon" => '<i class="fa fa-lock"></i>'
+            ],
+            "Add product"   => [
+                    'url'  => URL::route('products.create'),
                     "icon" => '<i class="fa fa-plus-circle"></i>'
             ]
     ]);

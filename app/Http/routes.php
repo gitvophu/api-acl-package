@@ -99,7 +99,7 @@ Route::group(['middleware' => ['web']], function () {
     |--------------------------------------------------------------------------
     |
      */
-    Route::group(['middleware' => ['admin_logged', 'can_see']], function () {
+    Route::group(['middleware' => ['admin_logged',/* 'can_see' */]], function () {
         /**
          * dashboard
          */
@@ -108,6 +108,33 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'LaravelAcl\Authentication\Controllers\DashboardController@base',
         ]);
 
+/**
+         * product
+         */
+        Route::get('/admin/products/list', [
+            'as' => 'products.list',
+            'uses' => 'LaravelAcl\Authentication\Controllers\ProductController@getList',
+        ]);
+        Route::get('/admin/products/edit/{id}', [
+            'as' => 'products.edit',
+            'uses' => 'LaravelAcl\Authentication\Controllers\ProductController@editProduct',
+        ]);
+        Route::get('/admin/products/create', [
+            'as' => 'products.create',
+            'uses' => 'LaravelAcl\Authentication\Controllers\ProductController@createProduct',
+        ]);
+        Route::post('/admin/products/store', [
+            'as' => 'products.store',
+            'uses' => 'LaravelAcl\Authentication\Controllers\ProductController@storeProduct',
+        ]);
+        Route::post('/admin/products', [
+            'as' => 'products.update',
+            'uses' => 'LaravelAcl\Authentication\Controllers\ProductController@updateProduct',
+        ]);
+        Route::get('/admin/products/delete/{id}', [
+            'as' => 'products.delete',
+            'uses' => 'LaravelAcl\Authentication\Controllers\ProductController@deleteProduct',
+        ]);
         /**
          * user
          */
